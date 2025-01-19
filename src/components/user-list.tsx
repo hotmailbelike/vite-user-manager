@@ -4,6 +4,8 @@ import { Loader } from './loader';
 import { useNavigate } from 'react-router';
 import { UserDataTable } from './user-data-table';
 import { userColumns } from '@/lib/user-columns';
+import { Button } from './ui/button';
+import { Pagination } from './pagination';
 
 const USERS_PER_PAGE = 10;
 
@@ -70,25 +72,13 @@ export const UserList = () => {
 
 			<UserDataTable columns={userColumns} data={userData?.users || []} />
 
-			<div className='flex justify-between items-center mt-4'>
-				<button
-					onClick={() => setPageNumber(pageNumber - 1)}
-					disabled={pageNumber === 0}
-					className='px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300'
-				>
-					Previous
-				</button>
-				<span>
-					Page {pageNumber + 1} of {totalPages}
-				</span>
-				<button
-					onClick={() => setPageNumber(pageNumber + 1)}
-					disabled={pageNumber >= totalPages - 1}
-					className='px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300'
-				>
-					Next
-				</button>
-			</div>
+			{userData?.users && userData?.users?.length > 0 && (
+				<Pagination
+					pageNumber={pageNumber}
+					setPageNumber={setPageNumber}
+					totalPages={totalPages}
+				/>
+			)}
 		</div>
 	);
 };
