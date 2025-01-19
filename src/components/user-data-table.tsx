@@ -1,5 +1,3 @@
-'use client';
-
 import {
 	ColumnDef,
 	flexRender,
@@ -54,10 +52,7 @@ export const UserDataTable = <TData, TValue>({
 				<TableBody>
 					{table.getRowModel().rows?.length ? (
 						table.getRowModel().rows.map((row) => (
-							<TableRow
-								key={row.id}
-								data-state={row.getIsSelected() && 'selected'}
-							>
+							<TableRow key={row.id}>
 								{row.getVisibleCells().map((cell) => (
 									<TableCell key={cell.id}>
 										{flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -68,7 +63,7 @@ export const UserDataTable = <TData, TValue>({
 					) : (
 						<TableRow>
 							<TableCell colSpan={columns.length} className='h-24 text-center'>
-								No results.
+								No results, please redefine your search input
 							</TableCell>
 						</TableRow>
 					)}
