@@ -46,7 +46,18 @@ export const UserList = () => {
 	}
 
 	return (
-		<div className='space-y-4'>
+		<div className='p-4 lg:p-16'>
+			<div className='mb-4'>
+				<h1 className='text-2xl text-center'>
+					Users fetched from
+					<Button className='text-2xl pl-2 text-cyan-600' variant={'link'}>
+						<a href='https://dummyjson.com/' target='_blank'>
+							https://dummyjson.com/
+						</a>
+					</Button>
+				</h1>
+			</div>
+
 			<div className='mb-4'>
 				<input
 					type='text'
